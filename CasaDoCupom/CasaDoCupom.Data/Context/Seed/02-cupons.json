@@ -1,0 +1,92 @@
+[
+  {
+    "id": "39c98002-a96b-422e-8cf5-3f4c14ff98d4",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "6XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "3aa37416-5d8b-487d-92a2-215252a959bf",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "9XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "1XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "5a7d4b60-3a43-4ad5-adb9-503149159a98",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "8XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "5d0d9c8b-a934-4f5a-a97f-ad89d5446452",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "5XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "73162f04-3a4d-4e54-a27d-86fce89abee3",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "2XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "d500eb1d-dc65-499a-b44c-b31a5a3bb969",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "3XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "f3650bef-847b-410c-a4af-8b571f2ee049",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "7XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "f3bbc396-0d1f-474f-b5fa-ca37d2286bc4",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "4XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  },
+  {
+    "id": "f6fe9473-1c74-4e70-ae59-21a5d723f1c7",
+    "empresaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "desconto": 10,
+    "validado": false,
+    "codigo": "10XIS-DELICIA-10%",
+    "reservado": false,
+    "dataCriacao": "2020-08-22T18:05:43"
+  }
+]
