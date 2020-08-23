@@ -1,0 +1,71 @@
+Segue o enunciado para o teste:
+
+O app Casa do Cupom disponibiliza um espaço na sua home para anunciar as lanchonetes que trabalhem com seus cupons de desconto, 
+recebendo uma comissão por cada cupom validado nas vendas.
+
+A lanchonete Xizão Cheiroso está cadastrada na plataforma e possui 10 cupons de desconto para compras dos seus lanches.
+Cada cupom pode ser utilizado em qualquer lanche e concede 10% de desconto no valor final.
+
+Para utilizar um cupom, o usuário deve fazer o download do mesmo pelo app e apresentar o seu código no momento da conclusão 
+da compra, aplicando assim o desconto. Esta compra pode ser efetuada pelo telefone ou pelo Whatsapp.
+
+Cada cupom validado, gera uma comissão para o app, então é um requisito básico garantir que o usuário final gere o cupom e 
+o estabelecimento o valide, prevenindo que o estabelecimento possa aplicar o desconto na venda e o cupom não ser utilizado, 
+isentando a lanchonete do pagamento da comissão para o app.
+
+Hoje, a única renda do app vem das comissões recebidas em cada cupom validado.
+Precisamos saber quais cupons foram gerados e validados num período específico.
+
+ 
+A proposta é desenvolver uma Rest API utilizando o padrão de modelagem DDD com a tecnologia .net Core 3.1.
+Iremos avaliar:
+- boas práticas de desenvolvimento
+- documentação
+- organização
+- raciocínio lógico
+- capacidade de resolução de problemas
+- tudo aquilo que você julgar importante
+
+Você tem o prazo de até 24/08 para concluir o teste. O resultado deve ser disponibilizado num repositório do Github e o usuário luishti(luis_hti@yahoo.com.br) deve ser adicionado para avaliação.
+
+Qualquer dúvida estou à disposição ;)
+
+API CasaDoCupom
+	Entities
+		Cupom
+			Id (Guid)
+			IdEmpresa (Guid)
+			DescontoPercentual (bool)
+			Desconto (decimal)
+			ValorCompra (decimal)
+			Validado (bool)
+			Codigo (string)
+
+														Comissão
+															Valor (decimal)
+
+		Empresa
+			Id (Guid)
+			Nome (string(50))
+			CNPJ (string(14))
+			Cupons[] (List<Cupom>)
+
+														Cliente
+															id (Guid)
+															Nome (string(50))
+															documento(CNPJ/CPF) (string(11/14))
+															Cupons[] (List<Cupom>)
+
+	EndPoints
+		Empresa
+			Default
+
+		Cupom
+			id, id_empresa, id_cliente, codigo_desconto
+			POST (Cadastrar) {id, id_empresa, codigo_desconto}
+			POST (Validar) {codigo_desconto, cpf, valor_compra}
+			POST (Cliente obtém cupom) (cpf, id) (PDF)
+
+															Cliente
+																Default
+
