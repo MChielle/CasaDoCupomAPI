@@ -24,7 +24,6 @@ namespace CasaDoCupom.Domain.Models
             Reservado = disponivel;
         }
 
-        [Required(ErrorMessage = "Id é obrigatório")]
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "EmpresaId é obrigatório")]

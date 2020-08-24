@@ -2,7 +2,6 @@
 using CasaDoCupom.Domain.Interface.Services;
 using CasaDoCupom.Domain.Models;
 using CasaDoCupom.Web.API.Controllers.Base;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -43,7 +42,9 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             try
             {
                 var cupom = await _service.GetByIdAsNoTrackingAsync(cupomId);
-                if (cupom != null && !cupom.Reservado)
+                if (cupom != null && cupom.Reservado) throw new Exception($"Cupom {cupom.Codigo} não pode ser RESERVADO uma segunda vez.");
+                if (cupom != null && cupom.Validado) throw new Exception($"Cupom {cupom.Codigo} VALIDADO não pode ser RESERVADO.");
+                if (cupom != null && !cupom.Reservado && !cupom.Validado)
                 {
                     cupom.Reservado = true;
                     return Ok(await _service.AddOrUpdateAsync(cupom));
@@ -63,7 +64,9 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             try
             {
                 var cupom = await _service.GetByCodigo(codigo);
-                if (cupom != null)
+                if (cupom != null && !cupom.Reservado) throw new Exception($"Cupom {cupom.Codigo} não foi RESERVADO.");
+                if (cupom != null && cupom.Validado) throw new Exception($"Cupom {cupom.Codigo} não pode ser usado uma segunda vez.");
+                if (cupom != null && cupom.Reservado && !cupom.Validado)
                 {
                     cupom.Validado = true;
                     return Ok(await _service.AddOrUpdateAsync(cupom));
@@ -78,7 +81,7 @@ namespace CasaDoCupom.Web.API.Controllers.v1
         }
 
         [Route("validadosporperiodo"), HttpPost]
-        public async Task<IActionResult> ValidadosPorPeriodo([FromForm] DateTime dataInicio, DateTime dataFim)
+        public async Task<IActionResult> ValidadosPorPeriodo([FromForm] DateTime dataInicio, [FromForm] DateTime dataFim)
         {
             try
             {
