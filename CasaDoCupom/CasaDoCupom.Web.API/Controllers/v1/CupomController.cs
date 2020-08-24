@@ -42,8 +42,8 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             try
             {
                 var cupom = await _service.GetByIdAsNoTrackingAsync(cupomId);
-                if (cupom != null && cupom.Reservado) throw new Exception($"Cupom {cupom.Codigo} não pode ser RESERVADO uma segunda vez.");
-                if (cupom != null && cupom.Validado) throw new Exception($"Cupom {cupom.Codigo} VALIDADO não pode ser RESERVADO.");
+                if (cupom != null && cupom.Reservado) return BadRequest($"Cupom {cupom.Codigo} não pode ser RESERVADO uma segunda vez.");
+                if (cupom != null && cupom.Validado) return BadRequest($"Cupom {cupom.Codigo} VALIDADO não pode ser RESERVADO.");
                 if (cupom != null && !cupom.Reservado && !cupom.Validado)
                 {
                     cupom.Reservado = true;
@@ -64,8 +64,8 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             try
             {
                 var cupom = await _service.GetByCodigo(codigo, empresaId);
-                if (cupom != null && !cupom.Reservado) throw new Exception($"Cupom {cupom.Codigo} não foi RESERVADO.");
-                if (cupom != null && cupom.Validado) throw new Exception($"Cupom {cupom.Codigo} não pode ser usado uma segunda vez.");
+                if (cupom != null && !cupom.Reservado) return BadRequest($"Cupom {cupom.Codigo} não foi RESERVADO.");
+                if (cupom != null && cupom.Validado) return BadRequest($"Cupom {cupom.Codigo} não pode ser usado uma segunda vez.");
                 if (cupom != null && cupom.Reservado && !cupom.Validado)
                 {
                     cupom.Validado = true;
