@@ -59,11 +59,11 @@ namespace CasaDoCupom.Web.API.Controllers.v1
         }
 
         [Route("validar"), HttpPost]
-        public async Task<IActionResult> ValidarCodigo([FromForm] string codigo)
+        public async Task<IActionResult> ValidarCodigo([FromForm] string codigo, [FromForm] Guid empresaId)
         {
             try
             {
-                var cupom = await _service.GetByCodigo(codigo);
+                var cupom = await _service.GetByCodigo(codigo, empresaId);
                 if (cupom != null && !cupom.Reservado) throw new Exception($"Cupom {cupom.Codigo} não foi RESERVADO.");
                 if (cupom != null && cupom.Validado) throw new Exception($"Cupom {cupom.Codigo} não pode ser usado uma segunda vez.");
                 if (cupom != null && cupom.Reservado && !cupom.Validado)
@@ -81,11 +81,11 @@ namespace CasaDoCupom.Web.API.Controllers.v1
         }
 
         [Route("validadosporperiodo"), HttpPost]
-        public async Task<IActionResult> ValidadosPorPeriodo([FromForm] DateTime dataInicio, [FromForm] DateTime dataFim)
+        public async Task<IActionResult> ValidadosPorPeriodo([FromForm] DateTime dataInicio, [FromForm] DateTime dataFim, [FromForm] Guid empresaId)
         {
             try
             {
-                var cupons = await _service.GetByDataAlteracao(dataInicio, dataFim);
+                var cupons = await _service.GetByDataAlteracao(dataInicio, dataFim, empresaId);
                 if (cupons.Any())
                 {
                     return Ok(cupons);

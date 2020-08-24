@@ -32,19 +32,19 @@ namespace CasaDoCupom.Data.Repository
             return entity;
         }
 
-        public async Task<Cupom> GetByCodigoAsNoTrackingAsync(string codigo)
+        public async Task<Cupom> GetByCodigoAsNoTrackingAsync(string codigo, Guid empresaId)
         {
-            return await context.Cupons.Where(x => x.Codigo == codigo).AsNoTracking().FirstOrDefaultAsync();
+            return await context.Cupons.Where(x => (x.Codigo == codigo && x.EmpresaId == empresaId)).AsNoTracking().FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Cupom>> GetByDataUltimaAlteracaoAsNoTrackingAsync(DateTime dataInicial, DateTime dataFinal)
+        public async Task<IEnumerable<Cupom>> GetByDataUltimaAlteracaoAsNoTrackingAsync(DateTime dataInicial, DateTime dataFinal, Guid empresaId)
         {
-            return await context.Cupons.Where(x => (x.Validado && x.DataUltimaAlteracao >= dataInicial && x.DataUltimaAlteracao <= dataFinal)).ToArrayAsync();
+            return await context.Cupons.Where(x => (x.Validado && x.DataUltimaAlteracao >= dataInicial && x.DataUltimaAlteracao <= dataFinal && x.EmpresaId == empresaId)).ToArrayAsync();
         }
 
         public async Task<Cupom> GetDisponivelByEmpresaIdAsNoTrackingAsync(Guid empresaId)
         {
-            return await context.Cupons.Where(x => (!x.Reservado && x.EmpresaId == empresaId)).AsNoTracking().FirstOrDefaultAsync();
+            return await context.Cupons.Where(x => (!x.Reservado && !x.Validado && x.EmpresaId == empresaId)).AsNoTracking().FirstOrDefaultAsync();
         }
     }
 }

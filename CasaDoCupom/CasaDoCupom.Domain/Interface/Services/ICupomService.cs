@@ -9,10 +9,10 @@ namespace CasaDoCupom.Domain.Interface.Services
 {
     public interface ICupomService : IServiceBase<Cupom, CupomModel, Guid>
     {
-        Task<CupomModel> GetByCodigo(string descricao);
+        Task<CupomModel> GetByCodigo(string codigo, Guid empresaId);
 
         Task<CupomModel> GetAvailableByEmpresaId(Guid empresaId);
 
-        Task<IEnumerable<CupomModel>> GetByDataAlteracao(DateTime dataInicial, DateTime dataFinal);
+        Task<IEnumerable<CupomModel>> GetByDataAlteracao(DateTime dataInicial, DateTime dataFinal, Guid empresaId);
     }
 }

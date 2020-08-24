@@ -8,10 +8,10 @@ namespace CasaDoCupom.Domain.Interface.Repository
 {
     public interface ICupomRepository : IRepositoryBase<Cupom, Guid>
     {
-        Task<Cupom> GetByCodigoAsNoTrackingAsync(string codigo);
+        Task<Cupom> GetByCodigoAsNoTrackingAsync(string codigo, Guid empresaId);
 
         Task<Cupom> GetDisponivelByEmpresaIdAsNoTrackingAsync(Guid empresaId);
 
-        Task<IEnumerable<Cupom>> GetByDataUltimaAlteracaoAsNoTrackingAsync(DateTime dataInicial, DateTime dataFinal);
+        Task<IEnumerable<Cupom>> GetByDataUltimaAlteracaoAsNoTrackingAsync(DateTime dataInicial, DateTime dataFinal, Guid empresaId);
     }
 }

@@ -26,9 +26,9 @@ namespace CasaDoCupom.Domain.Services
             return await base.BuildModelAsync(await cupomRepository.AddOrUpdateAsync(await base.BuildEntityAsync(model)));
         }
 
-        public async Task<CupomModel> GetByCodigo(string codigo)
+        public async Task<CupomModel> GetByCodigo(string codigo, Guid empresaId)
         {
-            return await BuildModelAsync(await cupomRepository.GetByCodigoAsNoTrackingAsync(codigo));
+            return await BuildModelAsync(await cupomRepository.GetByCodigoAsNoTrackingAsync(codigo, empresaId));
         }
 
         public async Task<CupomModel> GetAvailableByEmpresaId(Guid empresaId)
@@ -36,9 +36,9 @@ namespace CasaDoCupom.Domain.Services
             return await BuildModelAsync(await cupomRepository.GetDisponivelByEmpresaIdAsNoTrackingAsync(empresaId));
         }
 
-        public async Task<IEnumerable<CupomModel>> GetByDataAlteracao(DateTime dataInicial, DateTime dataFinal)
+        public async Task<IEnumerable<CupomModel>> GetByDataAlteracao(DateTime dataInicial, DateTime dataFinal, Guid empresaId)
         {
-            return await BuildModelAsync(await cupomRepository.GetByDataUltimaAlteracaoAsNoTrackingAsync(dataInicial, dataFinal));
+            return await BuildModelAsync(await cupomRepository.GetByDataUltimaAlteracaoAsNoTrackingAsync(dataInicial, dataFinal, empresaId));
         }
     }
 }

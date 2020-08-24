@@ -1,0 +1,29 @@
+Tecnologias:
+	C# .Net Core 3.1
+	MySQL 8.0.16
+	
+Frameworks
+	Microsoft.EntityFrameworkCore.Design 3.1.7
+	Swashbuckle.AspNetCore 5.5.1
+	AutoMapper 10.0.0
+	Microsoft.EntityFrameworkCore 3.1.7
+	Microsoft.EntityFrameworkCore.Tools 3.1.7
+	Newtonsoft.Json 12.0.3
+	Pomelo.EntityFrameworkCore.MySql 3.1.2
+
+Padrão de desenvolvimento
+	API REST
+	DDD (Domain Driven Design)
+
+Solução proposta para o enunciado:
+O cadastro da Empresa:
+	A API recebe o cadastro da empresa;
+Os cupons são cadastrados:
+	A API recebe x cadastros de cupons vinculados a empresa;
+Um cliente solicita um cupom:
+	A API recebe uma solicitação para retornar um cupom com status não RESERVADO e não VALIDADO, buscando pelo ID da empresa;
+O cliente realiza o download do cupom:
+	A API recebe uma solicitação para reservar um cupom com status não RESERVADO e não VALIDADO, pelo ID do cupom;
+O cliente apresenda o codigo do cupom no momento da venda, a empresa valida o código;
+	A API recebe uma solicitação para validar um cupom com status RESERVADO e não VALIDADO pelo código da promoção;	
+	
