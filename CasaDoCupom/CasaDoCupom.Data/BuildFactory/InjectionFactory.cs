@@ -21,7 +21,7 @@ namespace CasaDoCupom.Data.BuildFactory
 
             Services = services;
 
-            Services.AddDbContext<DataContext>(options => options.UseMySql(Configuration["ConnectionStrings:Default"]));
+            Services.AddDbContext<DataContext>(options => options.UseMySql(Configuration["ConnectionStrings:local"]));
 
             LoadServices();
             LoadRepositories();

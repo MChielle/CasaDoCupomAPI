@@ -5,7 +5,6 @@ using CasaDoCupom.Web.API.Controllers.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,7 +21,6 @@ namespace CasaDoCupom.Web.API.Controllers.v1
         }
 
         [Route("disponivel"), HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> BuscarDisponivelPeloEmpresaId([FromForm] Guid empresaId)
         {
             try
@@ -40,7 +38,6 @@ namespace CasaDoCupom.Web.API.Controllers.v1
         }
 
         [Route("reservar"), HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> ResarvarPeloId([FromForm] Guid cupomId)
         {
             try
@@ -61,7 +58,6 @@ namespace CasaDoCupom.Web.API.Controllers.v1
         }
 
         [Route("validar"), HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> ValidarCodigo([FromForm] string codigo)
         {
             try
@@ -81,8 +77,7 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             }
         }
 
-        [Route("validadosporperiodo")]
-        [AllowAnonymous]
+        [Route("validadosporperiodo"), HttpPost]
         public async Task<IActionResult> ValidadosPorPeriodo([FromForm] DateTime dataInicio, DateTime dataFim)
         {
             try

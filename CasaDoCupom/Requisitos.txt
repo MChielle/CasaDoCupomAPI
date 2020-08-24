@@ -30,42 +30,4 @@ Você tem o prazo de até 24/08 para concluir o teste. O resultado deve ser dispon
 
 Qualquer dúvida estou à disposição ;)
 
-API CasaDoCupom
-	Entities
-		Cupom
-			Id (Guid)
-			IdEmpresa (Guid)
-			DescontoPercentual (bool)
-			Desconto (decimal)
-			ValorCompra (decimal)
-			Validado (bool)
-			Codigo (string)
-
-														Comissão
-															Valor (decimal)
-
-		Empresa
-			Id (Guid)
-			Nome (string(50))
-			CNPJ (string(14))
-			Cupons[] (List<Cupom>)
-
-														Cliente
-															id (Guid)
-															Nome (string(50))
-															documento(CNPJ/CPF) (string(11/14))
-															Cupons[] (List<Cupom>)
-
-	EndPoints
-		Empresa
-			Default
-
-		Cupom
-			id, id_empresa, id_cliente, codigo_desconto
-			POST (Cadastrar) {id, id_empresa, codigo_desconto}
-			POST (Validar) {codigo_desconto, cpf, valor_compra}
-			POST (Cliente obtém cupom) (cpf, id) (PDF)
-
-															Cliente
-																Default
 
