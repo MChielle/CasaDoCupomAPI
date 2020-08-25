@@ -21,11 +21,21 @@ Padrão de desenvolvimento
 Solução proposta para o enunciado:
 1 - O cadastro da Empresa:
 		A API recebe o cadastro da empresa;
+
 2 - Os cupons são cadastrados:
 		A API recebe x cadastros de cupons vinculados a empresa;
+
 3 - Um cliente solicita um cupom:
+		https://localhost:5001/v1/cupons/v1/empresa/39c98002-a96b-422e-8cf5-3f4c14ff98d4/cupom.json:disponivel
 		A API recebe uma solicitação para retornar um cupom com status não RESERVADO e não VALIDADO, buscando pelo ID da empresa;
+
 4 - Se o cliente realizar o download do cupom, o cupom deve ser reservado para limitar o número de cupons distribuídos:
+		https://localhost:5001/v1/cupons/v1/cupom/39c98002-a96b-422e-8cf5-3f4c14ff98d4/cupom.json:reservar
 		A API recebe uma solicitação para reservar um cupom com status não RESERVADO e não VALIDADO, pelo ID do cupom;
+
 5 - O cliente apresenta o código do cupom no momento da compra, a empresa valida o código e aplica o desconto;
+		https://localhost:5001/v1/cupons/v1/empresa/39c98002-a96b-422e-8cf5-3f4c14ff98d4/codigocupom/6XIS-DELICIA-10%25/cupom.json:validar
 		A API recebe uma solicitação para validar um cupom com status RESERVADO e não VALIDADO pelo código da promoção e ID da empresa;
+
+6 - Para ver os cupons validados em um determinado período por data e ID da empresa;
+		https://localhost:5001/v1/cupons/v1/empresa/39c98002-a96b-422e-8cf5-3f4c14ff98d4/datainicio/2020-08/datafim/2020-09/cupons.json:validados
