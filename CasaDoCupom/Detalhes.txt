@@ -11,19 +11,21 @@ Frameworks
 	Newtonsoft.Json 12.0.3
 	Pomelo.EntityFrameworkCore.MySql 3.1.2
 
+Ferramenta de auxílio de integração e documentação automática.
+Swagger UI URL: https://localhost:5001/index.html
+
 Padrão de desenvolvimento
 	API REST
 	DDD (Domain Driven Design)
 
 Solução proposta para o enunciado:
-O cadastro da Empresa:
-	A API recebe o cadastro da empresa;
-Os cupons são cadastrados:
-	A API recebe x cadastros de cupons vinculados a empresa;
-Um cliente solicita um cupom:
-	A API recebe uma solicitação para retornar um cupom com status não RESERVADO e não VALIDADO, buscando pelo ID da empresa;
-O cliente realiza o download do cupom:
-	A API recebe uma solicitação para reservar um cupom com status não RESERVADO e não VALIDADO, pelo ID do cupom;
-O cliente apresenda o codigo do cupom no momento da venda, a empresa valida o código;
-	A API recebe uma solicitação para validar um cupom com status RESERVADO e não VALIDADO pelo código da promoção;	
-	
+1 - O cadastro da Empresa:
+		A API recebe o cadastro da empresa;
+2 - Os cupons são cadastrados:
+		A API recebe x cadastros de cupons vinculados a empresa;
+3 - Um cliente solicita um cupom:
+		A API recebe uma solicitação para retornar um cupom com status não RESERVADO e não VALIDADO, buscando pelo ID da empresa;
+4 - Se o cliente realizar o download do cupom, o cupom deve ser reservado para limitar o número de cupons distribuídos:
+		A API recebe uma solicitação para reservar um cupom com status não RESERVADO e não VALIDADO, pelo ID do cupom;
+5 - O cliente apresenta o código do cupom no momento da compra, a empresa valida o código e aplica o desconto;
+		A API recebe uma solicitação para validar um cupom com status RESERVADO e não VALIDADO pelo código da promoção e ID da empresa;

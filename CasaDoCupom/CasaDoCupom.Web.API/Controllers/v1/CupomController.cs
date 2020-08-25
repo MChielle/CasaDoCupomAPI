@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CasaDoCupom.Web.API.Controllers.v1
 {
-    [Route("cupom")]
+    [Route("v1/cupons")]
     public class CupomController : ControllerBase<Cupom, CupomModel, Guid>
     {
         readonly private ICupomService _service;
@@ -19,8 +19,8 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             _service = service;
         }
 
-        [Route("disponivel"), HttpPost]
-        public async Task<IActionResult> BuscarDisponivelPeloEmpresaId([FromForm] Guid empresaId)
+        [Route("v1/empresa/{empresaId}/cupom.json:disponivel"), HttpPost]
+        public async Task<IActionResult> BuscarDisponivelPeloEmpresaId([FromRoute] Guid empresaId)
         {
             try
             {
@@ -36,8 +36,8 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             }
         }
 
-        [Route("reservar"), HttpPost]
-        public async Task<IActionResult> ResarvarPeloId([FromForm] Guid cupomId)
+        [Route("v1/cupom/{cupomId}/cupom.json:reservar"), HttpPost]
+        public async Task<IActionResult> ReservarPeloId([FromRoute] Guid cupomId)
         {
             try
             {
@@ -58,8 +58,8 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             }
         }
 
-        [Route("validar"), HttpPost]
-        public async Task<IActionResult> ValidarCodigo([FromForm] string codigo, [FromForm] Guid empresaId)
+        [Route("v1/empresa/{empresaId}/codigocupom/{codigo}/cupom.json:validar"), HttpPost]
+        public async Task<IActionResult> ValidarCodigo([FromRoute] string codigo, [FromRoute] Guid empresaId)
         {
             try
             {
@@ -80,8 +80,8 @@ namespace CasaDoCupom.Web.API.Controllers.v1
             }
         }
 
-        [Route("validadosporperiodo"), HttpPost]
-        public async Task<IActionResult> ValidadosPorPeriodo([FromForm] DateTime dataInicio, [FromForm] DateTime dataFim, [FromForm] Guid empresaId)
+        [Route("v1/empresa/{empresaId}/datainicio/{dataInicio}/datafim/{dataFim}/cupons.json:validados"), HttpPost]
+        public async Task<IActionResult> ValidadosPorPeriodo([FromRoute] DateTime dataInicio, [FromRoute] DateTime dataFim, [FromRoute] Guid empresaId)
         {
             try
             {

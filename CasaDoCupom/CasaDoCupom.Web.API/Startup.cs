@@ -18,13 +18,11 @@ namespace CasaDoCupom.Web.API
             var builder = new ConfigurationBuilder()
             .AddJsonFile($"appsettings.json", optional: true)
             .AddEnvironmentVariables();
-                    Configuration = builder.Build();
             Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             InjectionFactory.ConfigureAPI(services, Configuration);
@@ -47,12 +45,11 @@ namespace CasaDoCupom.Web.API
                     Version = "v1",
                     Title = "Casa dos Cupons",
                     Description = "API para controle de cupons de desconto.",
-                    Contact = new OpenApiContact { Name = "Matheus Chielle", Email = "matheuschielle@gmail.com.br" }
+                    Contact = new OpenApiContact { Name = "Matheus Chielle", Email = "matheuschielle@gmail.com" }
                 });
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
@@ -69,7 +66,6 @@ namespace CasaDoCupom.Web.API
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

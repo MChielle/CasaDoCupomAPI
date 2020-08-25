@@ -7,7 +7,7 @@ using System;
 
 namespace CasaDoCupom.Web.API.Controllers.v1
 {
-    [Route("empresa")]
+    [Route("v1/empresa")]
     public class EmpresaController : ControllerBase<Empresa, EmpresaModel, Guid>
     {
         public EmpresaController(IEmpresaService service) : base(service)
